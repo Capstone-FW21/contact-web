@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="bkAnchor">
+<head>
+	<title>Capstone 2021: Contact Tracing System (Prototype)</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- no css stylesheet yet (20211230 - zgrow) -->
+</head>
+<body>
+	<form id="scanData" action="http://34.134.212.102/record_data" method="post">
+	<!--<form id="scanData" action="/record_data" method="post">-->
+	<!--<form id="scanData" method="post">-->
+		<label for="roomNumber">Room Number:</label><br />
+		<input type="text" id="roomNumber" name="roomNumber"><br />
+		<label for="userID">User ID#:</label><br />
+		<input type="text" id="userID" name="userID"><br />
+		<label for="relativeLoc">Relative Location:</label><br />
+		<input type="text" id="relativeLoc" name="relativeLoc"><br />
+		<label for="sendData">Press Submit to send your scan to our database:</label><br />
+		<input type="submit" id="scanData">
+		<!--<input type="button" id="scanData" name="sendData" value="Submit">-->
+		<!--<button type="submit" name="sendData">Submit</button>-->
+	</form>
+	<!-- begin javascript section -->
+	<!-- end javascript section -->
+</body>
+</html>
