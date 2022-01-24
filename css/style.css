@@ -1,0 +1,22 @@
+/* *** HTML, BODY, MAIN */
+html, body, main {
+	position: relative;
+	min-height: 100%;
+	font-family: serif;
+	font-size: 16pt;
+	line-height: 1.5;
+	color: black;
+	background-color: ivory;
+	width: auto;
+	padding: 5%;
+	margin: auto;
+}
+body {
+	text-align: center;
+}
+h1 {
+	font-size: 24pt;
+	font-family: sans;
+	color: ivory;
+	background-color: darkolivegreen;
+}
