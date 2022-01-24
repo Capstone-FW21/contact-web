@@ -4,20 +4,32 @@
     <title>Capstone 2021: Contact Tracing System (Prototype)</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- no css stylesheet yet (20211230 - zgrow) -->
+    <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body>
-    <form id="scanData" action="../python/submitScan.py" method="post">
-      <label for="email">Email:</label><br />
-      <input type="text" id="email" name="email" /><br />
-      <label for="roomNumber">Room Number:</label><br />
-      <input type="text" id="roomNumber" name="roomNumber" /><br />
-      <label for="sendData">Press Submit to send your scan to our database:</label><br />
-      <input type="submit" id="submitScanData" />
-      <!--<input type="button" id="scanData" name="sendData" value="Submit">-->
-      <!--<button type="submit" name="sendData">Submit</button>-->
+    <div id="icon">
+      <img src="psuIcon.jpg">
+      <p>PSU Contact Tracing</p>
+    </div>
+    <form id="scanData" action="../cgi-bin/submitScan.cgi" method="POST">
+      <fieldset>
+        <legend>Room Scan</legend>
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" /><br /><br />
+          <label for="roomNumber">Room Number:</label>
+          <input type="text" id="roomNumber" name="roomNumber" /><br />
+
+        <p id="submitButton">
+          <label for="sendData">Press Submit to send your scan to our database:</label>
+          <br /><br />
+          <input type="submit" id="submitScanData" />
+        </p>
+        
+      </fieldset>
     </form>
     <!-- begin javascript section -->
     <!-- end javascript section -->
   </body>
 </html>
+
+
