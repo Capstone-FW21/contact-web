@@ -7,29 +7,33 @@
     <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body>
-    <form id="scanData" action="../cgi-bin/submitScan.cgi" method="POST">
+    <form id="scanData" action="../cgi-bin/signIn.py" method="POST">
       <div id="logo">
         <img id ="icon" src="psuIcon.jpg">
         <p id="title">PSU Contact Tracing</p>
       </div>
       <fieldset>
-        <legend>Room Scan</legend>
+        <legend>Sign In</legend>
           <label for="email">Email:</label>
           <input type="text" id="email" name="email" /><br /><br />
-          <label for="roomNumber">Room Number:</label>
-          <input type="text" id="roomNumber" name="roomNumber" /><br />
+          <!-- <label for="userId">User Id:</label>
+          <input type="text" id="userId" name="userId" /><br /> -->
 
         <p id="submitButton">
-          <label for="sendData">Press Submit to send your scan to our database:</label>
-          <br /><br />
-          <input type="submit" id="submitScanData" value="Submit"/>
+          <input type="submit" id="submitScanData" value="Sign In"/>
         </p>
 
-        <p><a href="registration.html">Register</a></p>
+        <p><a href="registration.html">Sign Up</a></p>
       </fieldset>
     </form>
-	
+  
     <!-- begin javascript section -->
     <!-- end javascript section -->
   </body>
 </html>
+
+
+
+
+
+
