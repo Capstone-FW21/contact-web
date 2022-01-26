@@ -1,62 +1,76 @@
-#scanData{
-    width: 400px;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    font-family: 'Muli',sans-serif;
+#scanData {
+  width: 400px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-family: "Muli", sans-serif;
 }
 
-#icon, img{
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
+#logo {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
-fieldset{
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+#icon {
+  width: 100px;
 }
 
-legend{
-    text-align: center;
-    font-weight: bold;
+#title {
+  margin-top: 0px;
+  color: gray;
 }
 
-#submitButton{
-    text-align: center;
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+legend {
+  text-align: center;
+  font-weight: bold;
+}
 
-  input[type=text]:focus {
-    border: 3px solid #555;
-  }
-  
-  input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  input[type=submit]:hover {
-    background-color: #45a049;
-  }
+#submitButton {
+  text-align: center;
+}
 
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  border: 3px solid #555;
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/**scanSuccess Page **/
+.successText {
+  text-align: center;
+}
