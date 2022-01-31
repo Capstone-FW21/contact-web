@@ -5,31 +5,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/index.css" />
+    <script type="text/javascript">
+      function writeCookie() {
+        emailVal = escape(document.getElementById("email").value) + ";";
+        document.cookie = "email=" + emailVal;
+      }
+      function readCookie() {
+        var key, value, i, email;
+        var cookieArray = document.cookie.split(":");
+        for (i = 0; i < cookieArray.length; i++) {
+          key = cookieArray[i].substr(0, cookieArray[i].indexOf("="));
+          value = cookieArray[i].substr(cookieArray[i].indexOf("=") + 1);
+          key = key.replace(/^\s+|\s+$/g, "");
+          if (key == "email") {
+            //alert("Email is " + value);
+            email = value;
+          }
+        }
+        if (email) {
+          document.getElementById("email").value = email;
+        }
+      }
+    </script>
   </head>
   <body>
-    <form id="scanData" action="../cgi-bin/submitScan.cgi" method="POST">
-      <div id="logo">
-        <img id ="icon" src="psuIcon.jpg">
-        <p id="title">PSU Contact Tracing</p>
-      </div>
-      <fieldset>
-        <legend>Room Scan</legend>
-          <label for="email">Email:</label>
-          <input type="text" id="email" name="email" /><br /><br />
-          <label for="roomNumber">Room Number:</label>
-          <input type="text" id="roomNumber" name="roomNumber" /><br />
-
-        <p id="submitButton">
-          <label for="sendData">Press Submit to send your scan to our database:</label>
-          <br /><br />
-          <input type="submit" id="submitScanData" value="Submit"/>
-        </p>
-
-        <p><a href="registration.html">Register</a></p>
-      </fieldset>
-    </form>
-	
-    <!-- begin javascript section -->
-    <!-- end javascript section -->
-  </body>
+    <form id="scanData" action="../cgi-bin/submitScan.cgi" method="POST" onsubmit="writeCookie()">
+<div id="logo">
+    <img id ="icon" src="https://www.logolynx.com/images/logolynx/82/82590470b83eb44be69e8598efa845a7.png">
+    <p id="title">PSU Contact Tracing</p>
+  </div>
+<?php
+$email = $_GET['email'];
+$room_id = $_GET['room_id'];
+?>
+  <fieldset>
+    <legend>Room Scan</legend>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" value='<?php echo $email; ?>' /><br /><br />
+      <label for="roomNumber">Room Number:</label>
+      <input type="text" id="room_id" name="roomNumber" value='<?php echo $room_id; ?>'/><br />
+    <p id="submitButton">
+      <label for="sendData">Press Submit to send your scan to our database:</label>
+      <br /><br />
+      <input type="submit" id="submitScanData" value="Submit"/>
+    </p>
+    <!-- <p><a href="registration.html">Register</a></p>-->
+  </fieldset>
+</form>
+<!-- begin javascript section -->
+    <script>
+            window.onload = readCookie();
+    </script>
+<!-- end javascript section -->
+</body>
 </html>
