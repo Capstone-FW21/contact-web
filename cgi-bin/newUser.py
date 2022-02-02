@@ -3,6 +3,10 @@ import cgi
 import requests
 form = cgi.FieldStorage()
 email = form.getvalue("email")
-json_data = {"email": email}
-req = requests.post("http://34.134.138.81/", json=json_data)
-#req = requests.get("http://34.134.138.81/?email=JaneJones1643166115.029112%40fake.com")
+print("Content-type: text/html\n\n")
+url = "http://34.134.138.81/"
+s = requests.Session()
+cookie_obj= requests.cookies.create_cookie(domain=url, name='email', value=email)
+s.cookies.set_cookie(cookie_obj)
+r = requests.get(url, s.cookies)
+print(r.text)
