@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <html class="bkAnchor">
-  <head>
-    <title>Capstone 2021: Contact Tracing System (Prototype)</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-  <body>
-    <h1>PSU Capstone Project Winter 2021:<br />Contact Tracing System</h1>
-	<p>This is some placeholder text for the registration page. Upon arriving here, one of two things should happen:</p>
-	<ol>
-		<li>If the user has an email stored in their cookies, retrieve its details from the API and display them</li>
-		<li>If there is no stored email, ask if they would like one generated (and allow manual entry?) and make a new cookie</li>
-	</ol>
-	<a href="index.html">Return to Scan Entry</a>
-    <!-- begin javascript section -->
-    <!-- end javascript section -->
-  </body>
+
+<head>
+  <title>Capstone 2021: Contact Tracing System (Prototype)</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="../css/index.css" />
+  <script type="text/javascript">
+    function writeCookie() {
+      emailVal = escape(document.getElementById("email").value) + ";";
+      document.cookie = "email=" + emailVal;
+    }
+    function readCookie() {
+      var key, value, i, email;
+      var cookieArray = document.cookie.split(":");
+      for (i = 0; i < cookieArray.length; i++) {
+        key = cookieArray[i].substr(0, cookieArray[i].indexOf("="));
+        value = cookieArray[i].substr(cookieArray[i].indexOf("=") + 1);
+        key = key.replace(/^\s+|\s+$/g, "");
+        if (key == "email") {
+          //alert("Email is " + value);
+          email = value;
+        }
+      }
+      if (email) {
+        document.getElementById("email").value = email;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <form id="scanData" action="" method="POST" onsubmit="writeCookie()">
+    <div id="logo">
+      <img id="icon" src="https://www.logolynx.com/images/logolynx/82/82590470b83eb44be69e8598efa845a7.png" />
+      <p id="title">PSU Contact Tracing</p>
+    </div>
+
+    <fieldset>
+      <legend>Register New User</legend>
+      <label for="student_id">Student ID:</label>
+      <input type="text" id="student_id" name="student_id" value="" /><br />
+      <label for="fname">First Name:</label>
+      <input type="text" id="fname" name="fname" value="" /><br />
+      <label for="lname">Last Name:</label>
+      <input type="text" id="lname" name="lname" value="" /><br />
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" value="" /><br />
+      <p id="submitButton">
+        <label for="sendData">Press submit to create a new user</label>
+        <br /><br />
+        <input type="submit" id="submitScanData" value="Submit" />
+      </p>
+      <p>
+        <a href="index.html">Return to Scan Entry</a>
+      </p>
+    </fieldset>
+  </form>
+
+  <!-- begin javascript section -->
+  <script>
+    window.onload = readCookie();
+  </script>
+  <!-- end javascript section -->
+</body>
+
 </html>

@@ -29,33 +29,33 @@
     </script>
   </head>
   <body>
-    <form id="scanData" action="../cgi-bin/submitScan.cgi" method="POST" onsubmit="writeCookie()">
+        <form id="scanData" action="../cgi-bin/submitScan.cgi" method="POST" onsubmit="writeCookie()">
 <div id="logo">
-    <img id ="icon" src="https://www.logolynx.com/images/logolynx/82/82590470b83eb44be69e8598efa845a7.png">
-    <p id="title">PSU Contact Tracing</p>
-  </div>
+        <img id ="icon" src="https://www.logolynx.com/images/logolynx/82/82590470b83eb44be69e8598efa845a7.png">
+        <p id="title">PSU Contact Tracing</p>
+      </div>
 <?php
 $email = $_GET['email'];
 $room_id = $_GET['room_id'];
 ?>
-  <fieldset>
-    <legend>Room Scan</legend>
-      <label for="email">Email:</label>
-      <input type="text" id="email" name="email" value='<?php echo $email; ?>' /><br /><br />
-      <label for="roomNumber">Room Number:</label>
-      <input type="text" id="room_id" name="roomNumber" value='<?php echo $room_id; ?>'/><br />
-    <p id="submitButton">
-      <label for="sendData">Press Submit to send your scan to our database:</label>
-      <br /><br />
-      <input type="submit" id="submitScanData" value="Submit"/>
-    </p>
-    <!-- <p><a href="registration.html">Register</a></p>-->
-  </fieldset>
-</form>
-<!-- begin javascript section -->
-    <script>
-            window.onload = readCookie();
-    </script>
-<!-- end javascript section -->
-</body>
+      <fieldset>
+        <legend>Room Scan</legend>
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" value='<?php echo $email; ?>' /><br /><br />
+          <label for="roomNumber">Room Number:</label>
+          <input type="text" id="room_id" name="roomNumber" value='<?php echo $room_id; ?>'/><br />
+        <p id="submitButton">
+          <label for="sendData">Press Submit to send your scan to our database:</label>
+          <br /><br />
+          <input type="submit" id="submitScanData" value="Submit"/>
+        </p>
+        <p><a href=".../cgi-bin/getStudent.py">Register</a></p>
+      </fieldset>
+    </form>
+    <!-- begin javascript section -->
+        <script>
+                window.onload = readCookie();
+        </script>
+    <!-- end javascript section -->
+  </body>
 </html>
