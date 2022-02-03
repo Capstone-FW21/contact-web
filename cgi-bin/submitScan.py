@@ -4,7 +4,7 @@ import requests
 form = cgi.FieldStorage()
 email = form.getvalue("email")
 room_id = form.getvalue("roomNumber")
-json_data = {"scan": {"type": "ROOM", "email": email, "room_id": room_id}}
+json_data = {"scan": {"type": "ROOM", "email": email, "scanned_id": room_id}}
 req = requests.post("https://contact-api-dev-3sujih4x4a-uc.a.run.app/record_data", json=json_data)
 if req.status_code == requests.codes.ok+1:
     url = "http://34.134.138.81/scanSuccess.html"
