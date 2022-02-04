@@ -23,7 +23,7 @@ registrationPage = """
 </head>
 
 <body>
-  <form id="scanData" action="" method="POST">
+  <form id="scanData" action="/" method="POST">
     <div id="logo">
       <img id="icon" src="https://www.logolynx.com/images/logolynx/82/82590470b83eb44be69e8598efa845a7.png" />
       <p id="title">PSU Contact Tracing</p>
