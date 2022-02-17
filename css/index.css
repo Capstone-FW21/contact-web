@@ -63,6 +63,15 @@ legend {
   font-weight: bold;
 }
 
+/* canvas styling for room seat selection page */
+#seatChooser {
+	background-color: white;
+	background-image: url("../html/classroom-layout.jpg");
+	background-position: center;
+	background-size: 100% 100%;
+	margin: 20px;
+}
+
 a{
   color:rgb(255, 41, 41);
   text-decoration: none;

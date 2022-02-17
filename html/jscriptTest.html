@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<link rel="stylesheet" href="../css/index.css">
+</head>
+<body style = "background: lightblue;">
+	<p>Last mouse click located at: <p id="clickLocation">x: 0, y: 0</p></p>
+	<canvas id="seatChooser" width="520px" height="420px"></canvas>
+	<script type="text/javascript" language="javascript">
+		var boxWidth = 500;
+		var boxHeight = 400;
+		var boxPadding = 10;
+
+		var roomMap = document.getElementById("seatChooser");
+		var ctx = roomMap.getContext("2d");
+		function getCursorPosition(roomMap, event) {
+			const rect = roomMap.getBoundingClientRect();
+			const x = event.clientX - rect.left;
+			const y = event.clientY - rect.top;
+			console.log("x: " + x + "y: " + y);
+			document.getElementById("clickLocation").innerHTML = "x: " + x + ", y: " + y;
+		}
+		roomMap.addEventListener('mousedown', function(e) {
+			getCursorPosition(roomMap, e);
+		})
+		function drawBoard() {
+			for (var x = 0; x <= boxWidth; x+= 60) {
+				ctx.moveTo(0.5 + x + boxPadding, boxPadding);
+				ctx.lineTo(0.5 + x + boxPadding, boxHeight + boxPadding);
+			}
+			for (var x = 0; x <= boxHeight; x+= 60) {
+				ctx.moveTo(boxPadding, 0.5 + x + boxPadding);
+				ctx.lineTo(boxWidth + boxPadding, 0.5 + x + boxPadding);
+			}
+			ctx.strokeStyle = "black";
+			ctx.stroke();
+		}
+		drawBoard();
+	</script>
+</body>
+</html>
+
