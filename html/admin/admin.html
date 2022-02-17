@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="bkAnchor">
+
+<head>
+  <title>Capstone 2021: Contact Tracing System (Prototype)</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../css/index.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <form id="admin">
+      <div id="logo">
+        <img id="icon" src="https://www.logolynx.com/images/logolynx/82/82590470b83eb44be69e8598efa845a7.png">
+        <p id="title">PSU Contact Tracing</p>
+      </div>
+      <fieldset>
+        <legend>Admin</legend>
+
+        <label for="query">Option:</label>
+        <select name="query" id="query">
+          <option value="">Select One</option>
+          <option value="students">Students</option>
+          <option value="records">Records</option>
+          <option value="buildings">Buildings</option>
+          <option value="rooms">Rooms</option>
+        </select>
+      </fieldset>
+    </form>
+  <br />
+
+    <form name="students" id="students" class="forms" style="display:none" action="../../cgi-bin/admin.cgi" method="get">
+      <fieldset>
+        <legend>Students</legend>
+        <p id="submitButton">
+          <label for="sendData">Press submit to get student records:</label>
+          <input type="text" id="stats" value="students">
+          <br /><br />
+          <input type="submit" id="submitScanData" value="Submit" />
+        </p>
+      </fieldset>
+    </form>
+
+    <form name="records" id="records" class="forms" style="display:none">
+      <fieldset>
+        <legend>Records</legend>
+
+        <p id="submitButton">
+          <label for="sendData">Press submit to get all records:</label>
+          <br /><br />
+          <input type="submit" id="submitScanData" value="Submit" />
+        </p>
+      </fieldset>
+    </form>
+
+    <form name="buildings" id="buildings" class="forms" style="display:none">
+      <fieldset>
+        <legend>Buildings</legend>
+        <p id="submitButton">
+          <label for="sendData">Press submit to get building records:</label>
+          <br /><br />
+          <input type="submit" id="submitScanData" value="Submit" />
+        </p>
+      </fieldset>
+    </form>
+  
+    <form name="rooms" id="rooms" class="forms" style="display:none">
+      <fieldset>
+        <legend>Rooms</legend>
+        <p id="submitButton">
+          <label for="sendData">Press submit to get room records:</label>
+          <br /><br />
+          <input type="submit" id="submitScanData" value="Submit" />
+        </p>
+      </fieldset>
+    </form>
+</body>
+
+
+
+<!-- <p id="submitButton">
+        <label for="sendData">Press submit for records:</label>
+        <br /><br />
+        <input type="submit" id="submitScanData" value="Submit" />
+      </p> -->
+<!-- <p><a href=".../cgi-bin/getStudent.py">Room Scan</a></p> -->
+
+<!-- begin javascript section -->
+<script type="text/javascript">
+  // $("#query").on("change", function () {
+  //   alert("value: " + $(this).val());
+  //   $("#" + $(this).val()).show().siblings().hide();
+  // })
+  // Function to add event listener to table
+  var el = document.getElementById("query");
+  el.addEventListener("change", function () {
+    var elems = document.querySelectorAll('#students,#records,#buildings, #rooms')
+    for (var i = 0; i < elems.length; i++) {
+      elems[i].style.display = 'none'
+    }
+    if (this.selectedIndex === 1) {
+      document.querySelector('#students').style.display = 'block';
+    } else if (this.selectedIndex === 2) {
+      document.querySelector('#records').style.display = 'block';
+    } else if (this.selectedIndex === 3) {
+      document.querySelector('#buildings').style.display = 'block';
+    } else if (this.selectedIndex === 4) {
+      document.querySelector('#rooms').style.display = 'block';
+    }
+  }, false);
+</script>
+<!-- end javascript section -->
+</body>
+
+</html>
