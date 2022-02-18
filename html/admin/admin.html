@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form id="admin">
+    <form class="forms">
       <div id="logo">
         <img id="icon" src="https://www.logolynx.com/images/logolynx/82/82590470b83eb44be69e8598efa845a7.png">
         <p id="title">PSU Contact Tracing</p>
@@ -26,16 +26,20 @@
           <option value="buildings">Buildings</option>
           <option value="rooms">Rooms</option>
         </select>
+        <p>
+          Return to <a href="../index.html">Room Scan</a>
+           <!--<a href="../../">Advance Search</a>-->
+         </p>
       </fieldset>
     </form>
   <br />
 
-    <form name="students" id="students" class="forms" style="display:none" action="../../cgi-bin/admin.cgi" method="get">
+    <form name="students" id="students" class="forms" style="display:none" action="../../cgi-bin/admin.py" method="get">
       <fieldset>
         <legend>Students</legend>
         <p id="submitButton">
           <label for="sendData">Press submit to get student records:</label>
-          <input type="text" id="stats" value="students">
+          <input type="text" name="stats" id="stats" value="students">
           <br /><br />
           <input type="submit" id="submitScanData" value="Submit" />
         </p>
@@ -47,6 +51,9 @@
         <legend>Records</legend>
 
         <p id="submitButton">
+          <input type="text" name="stats" id="stats" value="records">
+          <label for="limit">Number of records</label>
+          <input type="text" name="limit" id="limit">
           <label for="sendData">Press submit to get all records:</label>
           <br /><br />
           <input type="submit" id="submitScanData" value="Submit" />
@@ -58,6 +65,7 @@
       <fieldset>
         <legend>Buildings</legend>
         <p id="submitButton">
+          <input type="text" name="stats" id="stats" value="students">
           <label for="sendData">Press submit to get building records:</label>
           <br /><br />
           <input type="submit" id="submitScanData" value="Submit" />
@@ -69,6 +77,7 @@
       <fieldset>
         <legend>Rooms</legend>
         <p id="submitButton">
+          <input type="text" name="stats" id="stats" value="students">
           <label for="sendData">Press submit to get room records:</label>
           <br /><br />
           <input type="submit" id="submitScanData" value="Submit" />
@@ -88,11 +97,7 @@
 
 <!-- begin javascript section -->
 <script type="text/javascript">
-  // $("#query").on("change", function () {
-  //   alert("value: " + $(this).val());
-  //   $("#" + $(this).val()).show().siblings().hide();
-  // })
-  // Function to add event listener to table
+  
   var el = document.getElementById("query");
   el.addEventListener("change", function () {
     var elems = document.querySelectorAll('#students,#records,#buildings, #rooms')

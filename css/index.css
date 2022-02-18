@@ -22,18 +22,16 @@
 
 .forms{
   width: 400px;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, 50%);
-  transform: translate(-50%, 50%);
+  margin: 0 auto;
   font-family: "Muli", sans-serif;
-  padding-bottom: 50px;
 }
-
 #stats{
   display: none;
+}
+.results{
+  text-align: left;
+  width: 350px;
+  margin: 0 auto;
 }
 
 #logo {
