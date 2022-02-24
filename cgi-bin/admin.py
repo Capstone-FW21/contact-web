@@ -41,44 +41,62 @@ if(query == "records"):
         X Coord: """ + str(x) + """<br>
         Y Coord: """ + str(y) + """
         </p><br>"""
-else:
+elif(query == "students"):
     req = requests.get("https://contact-api-internal-dev-3sujih4x4a-uc.a.run.app/stats/?stat_type=" + query)
     print("Content-type: text/html\n")
     data = req.json()
-    page = page + """<p>Return to <a href="../admin/admin.html">Admin</a></p><fieldset>
+    page = page + """<fieldset>
     <legend>""" + query.upper() + """</legend>"""
     for item in data:
-        if(query == "students"):
-            email = str(item[0])
-            name = str(item[1])
-            studentid = str(item[2])
-            page = page + """<p class="results">
-            Email: """ + email + """<br>
-            Name: """ + name + """<br>
-            Student ID: """ + studentid + """
-            </p><br>"""
-        elif(query == "buildings"):
-            name = str(item[0])
-            rooms = str(item[1])
-            scans = str(item[2])
-            students = str(item[3])
-            page = page + """<p class="results">
-            Building Name: """ + name + """<br>
-            Number of Rooms: """ + rooms + """<br>
-            Number of Scans: """ + scans + """<br>
-            Number of Unique Students: """ + students + """
-            </p><br>"""
-        elif(query == "rooms"):
-            roomid = str(item[0])
-            cap = str(item[1])
-            name = str(item[2])
-            ratio = str(item[3])
-            page = page + """<p class="results">
-            Room ID: """ + roomid + """<br>
-            Capacity: """ + cap + """<br>
-            Building Name: """ + name + """<br>
-            Room Ratio: """ + ratio + """<br>
-            </p><br>"""
+        email = str(item[0])
+        name = str(item[1])
+        studentid = str(item[2])
+        page = page + """<p class="results">
+        Email: """ + email + """<br>
+        Name: """ + name + """<br>
+        Student ID: """ + studentid + """ 
+        </p><br>"""
+elif(query == "buildings"):
+    req = ''
+    if(form.getvalue("building")):
+        b_id = form.getvalue("building")
+        req = requests.get("https://contact-api-internal-dev-3sujih4x4a-uc.a.run.app/buildings?building_id=" + b_id)
+    else:
+        req = requests.get("https://contact-api-internal-dev-3sujih4x4a-uc.a.run.app/buildings")
+    print("Content-type: text/html\n")
+    data = req.json()
+    page = page + """<fieldset>
+    <legend>""" + query.upper() + """</legend>"""
+    if(req):
+        for item in data:
+            for att, val in item.items():
+                #print("Item1: ", att)
+                #print("Item2: ", val)
+                page = page + """<p class="results">
+                """ + str(att) + """: """ + str(val) + """\n"""
+            page = page + """</p><br>"""
+elif(query == "rooms"):
+    req = ''
+    if(form.getvalue("roomd")):
+        r_id = form.getvalue("roomid")
+        req = requests.get("https://contact-api-internal-dev-3sujih4x4a-uc.a.run.app/rooms?room_id=" + r_id)
+    else:
+        req = requests.get("https://contact-api-internal-dev-3sujih4x4a-uc.a.run.app/rooms")
+    print("Content-type: text/html\n")
+    data = req.json()
+    page = page + """<fieldset>
+    <legend>""" + query.upper() + """</legend>"""
+    for item in data:
+        roomid = str(item[0])
+        cap = str(item[1])
+        name = str(item[2])
+        ratio = str(item[3])
+        page = page + """<p class="results">
+        Room ID: """ + roomid + """<br>
+        Capacity: """ + cap + """<br>
+        Building Name: """ + name + """<br>
+        Room Ratio: """ + ratio + """<br>
+        </p><br>"""
 page = page + """</fieldset>
 </form>
 </body>"""
