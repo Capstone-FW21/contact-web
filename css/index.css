@@ -1,12 +1,11 @@
 #scanData {
-  width: 400px;
   margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   font-family: "Muli", sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 #admin {
@@ -25,9 +24,11 @@
   margin: 0 auto;
   font-family: "Muli", sans-serif;
 }
+
 #stats{
   display: none;
 }
+
 .results{
   text-align: left;
   width: 350px;
@@ -62,9 +63,10 @@ legend {
 }
 
 /* canvas styling for room seat selection page */
+
 #seatChooser {
 	background-color: white;
-	background-image: url("../html/classroom-layout.jpg");
+	background-image: url("classroom-layout.jpg");
 	background-position: center;
 	background-size: 100% 100%;
 	margin: 20px;
