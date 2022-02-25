@@ -83,7 +83,6 @@ elif(query == "rooms"):
     else:
         req = requests.get("https://contact-api-internal-dev-3sujih4x4a-uc.a.run.app/rooms")
     print("Content-type: text/html\n")
-    data = req.json()
     page = page + """<fieldset>
     <legend>""" + query.upper() + """</legend>"""
     for item in data:
