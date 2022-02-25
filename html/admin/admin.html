@@ -10,109 +10,142 @@
 </head>
 
 <body>
-    <form class="forms">
-      <div id="logo">
-        <img id="icon" src="https://www.logolynx.com/images/logolynx/82/82590470b83eb44be69e8598efa845a7.png">
-        <p id="title">PSU Contact Tracing</p>
-      </div>
-      <fieldset>
-        <legend>Admin</legend>
+  <form class="forms">
+    <div id="logo">
+      <img id="icon" src="https://www.logolynx.com/images/logolynx/82/82590470b83eb44be69e8598efa845a7.png">
+      <p id="title">PSU Contact Tracing</p>
+    </div>
+    <fieldset>
+      <legend>Admin</legend>
 
-        <label for="query">Option:</label>
-        <select name="query" id="query">
-          <option value="">Select One</option>
-          <option value="students">Students</option>
-          <option value="records">Records</option>
-          <option value="buildings">Buildings</option>
-          <option value="rooms">Rooms</option>
-        </select>
-        <p>
-          Return to <a href="../index.html">Room Scan</a>
-           <!--<a href="../../">Advance Search</a>-->
-         </p>
-      </fieldset>
-    </form>
+      <label for="query">Option:</label>
+      <select name="query" id="query">
+        <option value="">Select One</option>
+        <option value="breakouts">Breakouts</option>
+        <option value="records">Records</option>
+        <option value="buildings">Buildings</option>
+        <option value="rooms">Rooms</option>
+      </select>
+      <p>
+        Return to <a href="../index.html">Room Scan</a>
+        <!--<a href="../../">Advance Search</a>-->
+      </p>
+    </fieldset>
+  </form>
   <br />
 
-    <form name="students" id="students" class="forms" style="display:none" action="../../cgi-bin/admin.py" method="get">
-      <fieldset>
-        <legend>Students</legend>
-        <p id="submitButton">
-          <label for="sendData">Press submit to get student records:</label>
-          <input type="text" name="stats" id="stats" value="students">
-          <br /><br />
-          <input type="submit" id="submitScanData" value="Submit" />
-        </p>
-      </fieldset>
-    </form>
-
-    <form name="records" id="records" class="forms" style="display:none">
-      <fieldset>
-        <legend>Records</legend>
-
-        <p id="submitButton">
-          <input type="text" name="stats" id="stats" value="records">
-          <label for="limit">Number of records</label>
-          <input type="text" name="limit" id="limit">
-          <label for="sendData">Press submit to get all records:</label>
-          <br /><br />
-          <input type="submit" id="submitScanData" value="Submit" />
-        </p>
-      </fieldset>
-    </form>
-
-    <form name="buildings" id="buildings" class="forms" style="display:none">
-      <fieldset>
-        <legend>Buildings</legend>
-        <p id="submitButton">
-          <input type="text" name="stats" id="stats" value="students">
-          <label for="sendData">Press submit to get building records:</label>
-          <br /><br />
-          <input type="submit" id="submitScanData" value="Submit" />
-        </p>
-      </fieldset>
-    </form>
-  
-    <form name="rooms" id="rooms" class="forms" style="display:none">
-      <fieldset>
-        <legend>Rooms</legend>
-        <p id="submitButton">
-          <input type="text" name="stats" id="stats" value="students">
-          <label for="sendData">Press submit to get room records:</label>
-          <br /><br />
-          <input type="submit" id="submitScanData" value="Submit" />
-        </p>
-      </fieldset>
-    </form>
-</body>
-
-
-
-<!-- <p id="submitButton">
-        <label for="sendData">Press submit for records:</label>
+  <form name="students" id="students" class="forms" style="display:none" action="../../cgi-bin/admin.py" method="get">
+    <fieldset>
+      <legend>Students</legend>
+      <p id="submitButton">
+        <label for="sendData">Press submit to get student records:</label>
+        <input type="text" name="stats" id="stats" value="students">
         <br /><br />
         <input type="submit" id="submitScanData" value="Submit" />
-      </p> -->
-<!-- <p><a href=".../cgi-bin/getStudent.py">Room Scan</a></p> -->
+      </p>
+    </fieldset>
+  </form>
+
+  <form name="breakouts" id="breakouts" class="forms" style="display:none" action="../../cgi-bin/admin.cgi"
+    method="get">
+    <fieldset>
+      <legend>Breakout</legend>
+      <input type="text" name="stats" id="stats" value="breakouts">
+      <p><label for="email">Enter Email address with positive covid test</label></p>
+      <input type="text" name="email" id="email" required>
+      <p><label for="date">Enter date of positive test results</label><br> Ex: April 20 2020 7:40AM</p>
+      <input type="text" name="date" id="date" required>
+      <p id="submitButton">
+        <label for="sendData">Press submit to get breakout records:</label>
+        <br /><br />
+        <input type="submit" id="submitScanData" value="Submit" />
+      </p>
+    </fieldset>
+  </form>
+
+
+  <form name="records" id="records" class="forms" style="display:none">
+    <fieldset>
+      <legend>Records</legend>
+
+      <p id="submitButton">
+        <input type="text" name="stats" id="stats" value="records">
+        <label for="limit">Number of records</label>
+        <input type="text" name="limit" id="limit" required>
+        <label for="sendData">Press submit to get all records:</label>
+        <br /><br />
+        <input type="submit" id="submitScanData" value="Submit" />
+      </p>
+    </fieldset>
+  </form>
+
+  <form name="buildings" id="buildings" class="forms" style="display:none" action="../../cgi-bin/admin.cgi" method="get">
+    <fieldset>
+      <legend>Buildings</legend>
+      <input type="text" name="stats" id="stats" value="buildings">
+      <p><label for="building">Leave blank for all buildings</label></br></br>
+      <label for="building">Building Id:</label></p>
+      <input type="text" name="building" id="building">
+      <p id="submitButton">
+        <label for="sendData">Press submit to get building records:</label>
+        <br /><br />
+        <input type="submit" id="submitScanData" value="Submit" />
+      </p>
+    </fieldset>
+  </form>
+
+  <form name="rooms" id="rooms" class="forms" style="display:none" action="../../cgi-bin/admin.cgi" method="get">
+    <fieldset>
+      <legend>Rooms</legend>
+      <input type="text" name="stats"  id="stats" value="rooms">
+      <p><label for="roomid">Leave blank for all rooms</label></br></br>
+      <label for="roomid">Room Id:</label></p>
+      <input type="text" name="roomid" id="roomid">
+      <p id="submitButton">
+        <label for="sendData">Press submit to get room records:</label>
+        <br /><br />
+        <input type="submit" id="submitScanData" value="Submit" />
+      </p>
+    </fieldset>
+  </form>
+
+  <form name="userRecords" id="userRecords" class="forms" style="display:none" action="../../cgi-bin/admin.cgi" method="get">
+    <fieldset>
+      <legend>User Records</legend>
+      <input type="text" name="stats"  id="stats" value="userRecords">
+      <p><label for="email">Email:</label></p>
+      <input type="text" name="email" id="email" required>
+      <p><label for="limit">Limit:</label></p>
+      <input type="text" name="limit" id="limit" required>
+      <p id="submitButton">
+        <label for="sendData">Press submit to get room records:</label>
+        <br /><br />
+        <input type="submit" id="submitScanData" value="Submit" />
+      </p>
+    </fieldset>
+  </form>
+</body>
 
 <!-- begin javascript section -->
 <script type="text/javascript">
-  
+
   var el = document.getElementById("query");
   el.addEventListener("change", function () {
-    var elems = document.querySelectorAll('#students,#records,#buildings, #rooms')
+    var elems = document.querySelectorAll('#breakouts,#records,#buildings,#rooms,#userRecords')
     for (var i = 0; i < elems.length; i++) {
       elems[i].style.display = 'none'
     }
     if (this.selectedIndex === 1) {
-      document.querySelector('#students').style.display = 'block';
+      document.querySelector('#breakouts').style.display = 'block';
     } else if (this.selectedIndex === 2) {
       document.querySelector('#records').style.display = 'block';
     } else if (this.selectedIndex === 3) {
       document.querySelector('#buildings').style.display = 'block';
     } else if (this.selectedIndex === 4) {
       document.querySelector('#rooms').style.display = 'block';
-    }
+    } else if (this.selectedIndex === 5) {
+      document.querySelector('#userRecords').style.display = 'block';
+    }  
   }, false);
 </script>
 <!-- end javascript section -->
