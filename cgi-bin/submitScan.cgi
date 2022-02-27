@@ -50,20 +50,21 @@ page = page + """
     <fieldset>
 	<legend>Room Scan</legend>
           <label for="email">Email:</label>
-          <p><strong>""" + email + """</strong></p>
-          <label for="email">Room Number:</label>
-          <p><strong>""" + room_id + """</strong></p>
-	  <p style="text-align: center;"><canvas id="seatChooser" width=" """
+          <input name="email" id="email" value=" """ + email + """ " </input>
+          <label for="roomNumber">Room Number:</label>
+          <input name="roomNumber" id="roomNumber" value=" """ + room_id + """ " </input>
+	  <p style="text-align: center;">
+          <canvas id="seatChooser" width=" """
 page = page + str(new_width + 20)
 page = page + """px" height=" """
 page = page + str(new_height + 20)
 page = page + """px"></canvas></p>
 	  <p id="seatPositionDisplay">
 		<label for="seatPosition">Please select an approximate position of your seat:</label><br />
-		<label for="seatXValue">X:</label>
-		<input type="number" id="seat_xPos" name="seatXPosition" value=0 /><br />
-		<label for="seatyValue">Y:</label>
-		<input type="number" id="seat_yPos" name="seatYPosition" value=0 />
+		<label for="seatXPosition">X:</label>
+		<input type="number" step="any" id="seat_xPos" name="seatXPosition" value=0 />%<br />
+		<label for="seatYPosition">Y:</label>
+		<input type="number" step="any" id="seat_yPos" name="seatYPosition" value=0 />%
 	</p>
         <p id="submitButton">
           <label for="sendData">Press Submit to send your scan to our database:</label>
@@ -89,13 +90,18 @@ page = page + """ ;
 			const rect = roomMap.getBoundingClientRect();
 			const x = event.clientX - rect.left;
 			const y = event.clientY - rect.top;
-			document.getElementById("seat_xPos").value = Math.round(x);
-			document.getElementById("seat_yPos").value = Math.round(y);
+                        const xPct = x * 100 / document.getElementById("seatChooser").width;
+                        const yPct = y * 100 / document.getElementById("seatChooser").height;
+			document.getElementById("seat_xPos").value = Number(xPct).toFixed(2);
+			document.getElementById("seat_yPos").value = Number(yPct).toFixed(2);;
 		}
 		roomMap.addEventListener('mousedown', function(e) {
 			getCursorPosition(roomMap, e);
 		})
 		function drawBoard() {
+                        ctx.strokeStyle = "black";
+                        ctx.lineWidth = 5;
+                        ctx.strokeRect(boxPadding, boxPadding, boxWidth, boxHeight);
 			for (var x = 0; x <= boxWidth; x+= gridSize) {
 				ctx.moveTo(0.5 + x + boxPadding, boxPadding);
 				ctx.lineTo(0.5 + x + boxPadding, boxHeight + boxPadding);
@@ -105,6 +111,7 @@ page = page + """ ;
 				ctx.lineTo(boxWidth + boxPadding, 0.5 + x + boxPadding);
 			}
 			ctx.strokeStyle = "grey";
+                        ctx.lineWidth = 1;
 			ctx.stroke();
 		}
 		drawBoard();
